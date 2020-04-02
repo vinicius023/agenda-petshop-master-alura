@@ -3,6 +3,13 @@ const conexao = require('./infraestrutura/conexao')
 const Tabelas = require('./infraestrutura/database/tabelas')
 
 const resolvers = {
+  Mutation: {
+    adicionarCliente: (root, params) => ({
+      id: 1,
+      nome: params.nome,
+      cpf: params.cpf
+    })
+  },
   Query: {
     status: () => "Servidor rodando!"
   }
