@@ -13,11 +13,15 @@ class Cliente {
     executaQuery(res, sql)
   }
 
-  adiciona(res, item) {
+  adiciona(item) {
     const { nome, cpf } = item
     const sql = `INSERT INTO Clientes(nome, CPF) VALUES('${nome}', '${cpf}')`
 
-    executaQuery(res, sql)
+    return executaQuery(sql).then(data => ({
+      id: data.insertId,
+      nome,
+      cpf
+    }))
   }
 
   atualiza(res, novoItem, id) {
